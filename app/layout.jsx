@@ -1,12 +1,23 @@
 // styles 
-import "./global.css";
+import "../lib/config/global.css";
+// components 
+import Navbar from "./components/navbar";
+// redux 
+import StoreProvider from "./storeProvider";
 
-const RootLayout = ( { children } ) => {
+
+// config 
+const metadata = {
+    title: "Digikala"
+}; export { metadata };
+
+const RootLayout = ({ children }) => {
     return (
         <html lang="en">
             <body>
-                { children }
+                <Navbar />
+                <StoreProvider children={children} />
             </body>
         </html>
     )
-};export default RootLayout ;
+}; export default RootLayout;

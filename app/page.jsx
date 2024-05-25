@@ -1,7 +1,7 @@
 const Page = () => {
     return (
         <div>
-            root page 
+            <p>sds</p>
         </div>
     )
 };export default Page ;

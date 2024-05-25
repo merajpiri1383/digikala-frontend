@@ -1,3 +1,6 @@
+// styles 
+import "./global.css";
+
 const RootLayout = ( { children } ) => {
     return (
         <html lang="en">

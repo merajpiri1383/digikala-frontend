@@ -1,7 +1,10 @@
+// components 
+import LoginOtpForm from "./components/loginOtpForm";
+
 const Page = () => {
     return (
         <div>
-            login with otp
+            <LoginOtpForm />
         </div>
     )
 };export default Page;

@@ -1,6 +1,6 @@
 // loading 
 import { Suspense } from "react";
-import Loading from "./loading";
+import Loading from "../components/loading";
 
 
 const AuthLayout = ( { children } ) => {

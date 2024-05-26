@@ -11,7 +11,7 @@ import API from "../../../lib/config/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // redux tools 
-import { useDispatch } from "react-redux";
+import { useDispatch  } from "react-redux";
 import { changeUser } from "../../../lib/reducers/user";
 // reveal 
 import {Zoom} from "react-awesome-reveal";
@@ -39,11 +39,10 @@ const AuthForm = () => {
     };
 
     const formHandeler = async (e) => {
-
         e.preventDefault();
         await API.post("account/auth/", { email: email }).then((response) => {
-            dispath(changeUser({ created: response.data.created }))
-            router.push("/auth/login")
+            dispath(changeUser({ created: response.data.created }));
+            response.data.created ? router.push("/auth/login-with-otp/") : router.push("/auth/login/");
         }).catch((error) => {
             try {
                 if (error.response.status === 429) {

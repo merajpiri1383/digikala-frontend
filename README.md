@@ -10,7 +10,9 @@ build with react.js and next.js
  
 - `axios` - > for connect to backend and API 
 - `react-icons` 
-- `tailwind` for styles 
+- `tailwind` ->  for styles 
+- `react-awesome-reveal` ->  for effects 
+- `react-toastify` -> for alerts 
 
 --- 
 
@@ -18,5 +20,3 @@ build with react.js and next.js
 
 - `npm install` 
 - `npm run dev`
-
----

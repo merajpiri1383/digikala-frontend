@@ -1,7 +1,10 @@
+// components 
+import AuthForm from "./components/authForm";
+
 const Page = () => {
     return (
         <div>
-            auth
+            <AuthForm />
         </div>
     )
 };export default Page ;

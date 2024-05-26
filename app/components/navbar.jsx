@@ -1,5 +1,5 @@
 // logo 
-import Logo from "../static/logo.svg";
+import Logo from "../../static/logo.svg";
 // icons 
 import { FaCartShopping } from "react-icons/fa6";
 import { LuLogIn } from "react-icons/lu";

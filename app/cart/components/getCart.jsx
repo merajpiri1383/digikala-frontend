@@ -1,15 +1,17 @@
 "use client"
 
 // API 
-import API from "../../../lib/config/api";
+import API,{handle401Error} from "../../../lib/config/api";
+// next tools 
+import {useRouter} from "next/navigation";
 
 const GetCart = () => {
+    const router = useRouter();
 
     ( async ()=>{
         await API.get("/cart/").then((response)=>{
-            console.log(response.data)
         }).catch((error) => {
-            console.log(error.response.data)
+            error.response.status === 401 && handle401Error(router);
         })
     })()
 

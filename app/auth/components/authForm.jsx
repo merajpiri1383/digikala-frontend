@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 // other tools   
 import Logo from "../../../static/logo.svg";
-import API from "../../../lib/config/api";
+import API,{clearToken} from "../../../lib/config/api";
 // react toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -38,29 +38,25 @@ const AuthForm = () => {
         }
     };
 
-    const sendOTPEmail = async () => {
-        await API.post("/account/send-otp/",{email : email}).then().catch();
-    };
-
     const formHandeler = async (e) => {
+        clearToken();
         e.preventDefault();
         await API.post("account/auth/", { email: email }).then((response) => {
             dispath(changeUser({ created: response.data.created , email : email }));
             if (response.data.created) { 
-                sendOTPEmail();
                 router.push("/auth/login-with-otp/");
             }else{
                 router.push("/auth/login/");
             }
         }).catch((error) => {
-            console.log(error)
+            console.log(error.response.data)
             try {
                 if (error.response.status === 429) {
                     toast.error("شما بیشتر از ۳ بار تلاش ناموفق داشته اید لطفا بعدا امتحان کنید")
                 }
             } catch { }
         });
-    };
+    }; 
 
     return (
         <Zoom duration={300}>

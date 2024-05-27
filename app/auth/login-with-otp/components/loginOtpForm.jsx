@@ -10,14 +10,14 @@ import { FaAngleLeft } from "react-icons/fa";
 // redux 
 import { useSelector } from "react-redux";
 // react tools 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 // regex 
 const inputRegex = /^([0-9]){1,}$/;
 // next js tools 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // API 
-import API,{setToken} from "../../../../lib/config/api";
+import API,{setToken,clearToken} from "../../../../lib/config/api";
 // react toastify 
 import { toast } from "react-toastify";
 
@@ -36,7 +36,14 @@ const LoginOtpForm = () => {
             setError("مقدار وارد شده باید فقط شامل عدد باشد")
         }
     };
+
+    const sendOTPEmail = async () => {
+        console.log("send otp code")
+        await API.post("/account/send-otp/",{email : user.email}).then().catch();
+    };
+
     const formhandeler = async (e) => {
+        clearToken();
         e.preventDefault();
         console.log("submit");
         user.email && await API.post("/account/activate/",{email : user.email,otp : otp}).then((response) => {
@@ -45,13 +52,17 @@ const LoginOtpForm = () => {
         }).catch((error)=> {
             switch(error.response.data["detail"]){
                 case "required-otp" : {
-                    console.log("otp is required");
+                    console.log("otp is required"); 
                     toast.error("شما هنوز کد تایید را وارد نکرده")
                 }
             }
             console.log(error.response.data["detail"] );
+            error.response.status === 429 && toast.error("شما بیشتر از ۳ بار کد اشتباه وارد کردید لطفا بعدا امتحان کنید")
         })
     };
+    useEffect(()=>{
+        sendOTPEmail();
+    },[])
     return (
         <Zoom duration={500}>
             <div className="h-96 m-5 p-5 flex items-center justify-center">

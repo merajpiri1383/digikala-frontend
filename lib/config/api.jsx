@@ -7,11 +7,10 @@ const API = axios.create({
 
 
 API.interceptors.request.use((config) => {
-    console.log("pre request");
     if(Cookies.get("access_token")){
         config.headers.Authorization = `Bearer ${Cookies.get("access_token")}`
     }
-    return config
+    return config;
 });
 
 const setToken = (access_token,refresh_token=null) => {
@@ -19,3 +18,18 @@ const setToken = (access_token,refresh_token=null) => {
     API.defaults.headers.common.Authorization = `Bearer ${access_token}`;
     refresh_token && Cookies.set("refresh_token",refresh_token,{expires:7,secure:true,sameSite:true});
 };export {setToken};
+
+const handle401Error = async (router) => {
+    if(Cookies.get('refresh_token')){
+        await API.post("/account/token/refresh/",{refresh : Cookies.get("refresh_token")}).then((response) => {
+            setToken(response.data.access);
+        }).catch((error)=>{
+            clearToken();
+            return router.push("/auth/")
+        })
+    }
+};export {handle401Error};
+
+const clearToken = () => {
+    Cookies.remove("access_token");
+};export {clearToken};

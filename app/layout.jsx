@@ -17,8 +17,10 @@ const RootLayout = ({ children }) => {
     return (
         <html lang="en">
             <body>
-                <Navbar />
-                <StoreProvider children={children} />
+                <StoreProvider>
+                    <Navbar />
+                    {children}
+                </StoreProvider>
                 <ToastContainer draggable={true} />
             </body>
         </html>

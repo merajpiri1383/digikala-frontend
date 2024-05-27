@@ -8,7 +8,8 @@ import Image from 'next/image';
 import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa";
 // redux 
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
+import { changeUser } from "../../../../lib/reducers/user";
 // react tools 
 import { useState,useEffect } from "react";
 // regex 
@@ -23,8 +24,10 @@ import { toast } from "react-toastify";
 
 
 
+
 const LoginOtpForm = () => {
     const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
     const [otp,setOtp] = useState("");
     const [error, setError] = useState(null);
     const router = useRouter();
@@ -48,6 +51,7 @@ const LoginOtpForm = () => {
         console.log("submit");
         user.email && await API.post("/account/activate/",{email : user.email,otp : otp}).then((response) => {
             setToken(response.data.access_token,response.data.refresh_token);
+            dispatch(changeUser({is_login : true}));
             return router.push("/");
         }).catch((error)=> {
             switch(error.response.data["detail"]){

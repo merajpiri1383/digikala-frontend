@@ -13,6 +13,7 @@ build with react.js and next.js
 - `tailwind` ->  for styles 
 - `react-awesome-reveal` ->  for effects 
 - `react-toastify` -> for alerts 
+- `js-cookie` -> to store tokens 
 
 --- 
 

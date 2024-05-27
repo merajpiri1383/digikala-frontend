@@ -11,10 +11,10 @@ import API from "../../../lib/config/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // redux tools 
-import { useDispatch  } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeUser } from "../../../lib/reducers/user";
 // reveal 
-import {Zoom} from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 
 
 // regex for validating email input 
@@ -38,12 +38,22 @@ const AuthForm = () => {
         }
     };
 
+    const sendOTPEmail = async () => {
+        await API.post("/account/send-otp/",{email : email}).then().catch();
+    };
+
     const formHandeler = async (e) => {
         e.preventDefault();
         await API.post("account/auth/", { email: email }).then((response) => {
-            dispath(changeUser({ created: response.data.created }));
-            response.data.created ? router.push("/auth/login-with-otp/") : router.push("/auth/login/");
+            dispath(changeUser({ created: response.data.created , email : email }));
+            if (response.data.created) { 
+                sendOTPEmail();
+                router.push("/auth/login-with-otp/");
+            }else{
+                router.push("/auth/login/");
+            }
         }).catch((error) => {
+            console.log(error)
             try {
                 if (error.response.status === 429) {
                     toast.error("شما بیشتر از ۳ بار تلاش ناموفق داشته اید لطفا بعدا امتحان کنید")
@@ -72,17 +82,17 @@ const AuthForm = () => {
                     </div>
                     <div className="p-3 text-right">
                         <input type="email" className={`text-lg p-3 outline
-                    ${emailValid ? `outline-green-500` : `outline-red-500`} rounded-lg w-full
-                    outline-1 text-right ${emailValid ? `text-green-500` : `text-red-500`}`}
+                    ${emailValid ? `outline-green-500` : `outline-rose-500`} rounded-lg w-full
+                    outline-1 text-right ${emailValid ? `text-green-500` : `text-rose-500`}`}
                             onChange={(e) => inputHandeler(e)} />
-                        <p className={`font-extralight text-xs text-red-500 transition duration-300
-                    ${emailValid ? `text-green-500` : `text-red-500`}`}
+                        <p className={`font-extralight text-xs text-rose-500 transition duration-300
+                    ${emailValid ? `text-green-500` : `text-rose-500`}`}
                         >لطفا این قسمت را خالی نگذارید</p>
                     </div>
                     <div className="p-3 flex justify-center">
-                        <button type="submit" disabled={!emailValid}
-                            className="bg-red-500 text-white p-3 w-full rounded-lg disabled:bg-red-300
-                    disabled:cursor-not-allowed transition duration-300">ورود</button>
+                        <button type="submit" disabled={!emailValid} className="bg-rose-500 text-white p-3 w-full rounded-lg 
+                        disabled:bg-rose-300 disabled:cursor-not-allowed transition duration-300 active:bg-rose-600 
+                        hover:bg-rose-400">ورود</button>
                     </div>
                     <p className="text-xs text-right text-gray-400">
                         ورود شما به معنای پذیرش

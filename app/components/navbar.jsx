@@ -13,7 +13,9 @@ const Navbar = () => {
         <div className="grid-cols-9 grid p-3">
             <div className="col-span-4 grid grid-cols-10">
                 <div className="flex items-center justify-center">
-                    <FaCartShopping className="size-1/2" />
+                    <Link href={"/cart/"}>
+                        <FaCartShopping className="size-8" />
+                    </Link>
                 </div>
                 <Link href={"/auth"} className="col-span-3 flex align-items-center items-center 
                 flex-row-reverse self-center justify-center py-2 outline outline-1 outline-gray-300
@@ -27,10 +29,12 @@ const Navbar = () => {
                 rounded-lg p-2 outline-none focus:bg-white transition border-solid border-2
                 focus:shadow-lg duration-300 " />
                 <div className="flex justify-center">
-                    <Image
-                    src={Logo}
-                    alt="logo"
-                    />
+                    <Link href={"/"} className="flex items-center">
+                        <Image
+                            src={Logo}
+                            alt="logo"
+                        />
+                    </Link>
                 </div>
             </form>
         </div>

@@ -26,9 +26,11 @@ const LoginForm = () => {
                             alt="logo"
                             className="size-36 h-20 col-start-3 col-span-3"
                         />
-                        <GoArrowRight className="col-start-7 justify-self-center size-8" />
+                        <Link href={"/auth/"} className="col-start-7 justify-self-center">
+                            <GoArrowRight className="size-8" />
+                        </Link>
                     </div>
-                    <h1 className="text-right text-lg font-semibold">رمز عبور را وارد کنید</h1>
+                    <h1 className="text-right text-lg ">رمز عبور را وارد کنید</h1>
                     <div className="grid grid-cols-10 gap-4 border border-stone-200 rounded-lg items-center py-1 px-3">
                         {
                             showPassword ?
@@ -41,16 +43,12 @@ const LoginForm = () => {
                         text-lg" />
                     </div>
                     <div className="grid grid-cols-1">
-                        <Link href={"/"} className="flex items-center justify-end">
+                        <Link href={"/auth/login-with-otp/"} className="flex items-center justify-end">
                             <FaAngleLeft className="text-cyan-500" />
-                            <p className="text-cyan-500 text-sm font-semibold">ورود با رمز یک‌بار‌مصرف</p>
-                        </Link>
-                        <Link href={"/"} className="flex items-center justify-end">
-                            <FaAngleLeft className="text-cyan-500" />
-                            <p className="text-cyan-500 text-sm font-semibold">فراموشی رمز عبور</p>
+                            <p className="text-cyan-600 text-sm ">ورود با رمز یک‌بار‌مصرف</p>
                         </Link>
                     </div>
-                    <button className="bg-red-500 w-full text-white font-bold p-3 rounded-lg">تایید</button>
+                    <button className="bg-rose-500 w-full text-white text-md p-3 rounded-lg">تایید</button>
                 </form>
             </div>
         </Zoom>

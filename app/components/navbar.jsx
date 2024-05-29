@@ -11,6 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 // redux 
 import { useSelector } from "react-redux";
+// components 
+import ProfileDropDown from "./profileDropdown";
 
 
 const Navbar = () => {
@@ -24,13 +26,15 @@ const Navbar = () => {
                         <FaCartShopping className="size-8 w-full border-r-2 px-2" />
                     </Link>
                 </div>
-                <div className="col-span-4 xl:col-span-3">
+                <div className="col-span-2">
                     {
                         isLogin ?
-                            <Link href={"/"} className="grid grid-cols-3 w-full items-center gap-7">
-                                <FaCaretDown className="size-4 col-span-1" />
-                                <FaRegUser className="size-2/3 col-span-2" />
-                            </Link> :
+                            <ProfileDropDown>
+                                <Link href={"/"} className="grid grid-cols-2 items-center justify-center p-1">
+                                    <FaCaretDown className="size-4 col-span-1" />
+                                    <FaRegUser className="size-8 col-span-1" />
+                                </Link>
+                            </ProfileDropDown> :
                             <Link href={"/auth"} className=" flex align-items-center w-full items-center 
                         flex-row-reverse self-center justify-center py-2 outline outline-1 outline-gray-300
                         rounded-lg gap-2 hover:bg-gray-50 cursor-pointer">

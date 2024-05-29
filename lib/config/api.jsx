@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { changeUser } from "../reducers/user";
+import Store from "../store";
 
 const API = axios.create({
     baseURL : "http://127.0.0.1:8000/",
@@ -10,6 +11,7 @@ const API = axios.create({
 API.interceptors.request.use((config) => {
     if(Cookies.get("access_token")){
         config.headers.Authorization = `Bearer ${Cookies.get("access_token")}`;
+        Store.dispatch(changeUser({is_login : true}));
     }
     return config;
 });

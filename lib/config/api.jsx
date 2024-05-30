@@ -22,13 +22,13 @@ const setToken = (access_token,refresh_token=null) => {
     refresh_token && Cookies.set("refresh_token",refresh_token,{expires:7,secure:true,sameSite:true});
 };export {setToken};
 
-const handle401Error = async (router,dispatch) => {
+const handle401Error = async (router) => {
     if(Cookies.get('refresh_token')){
         await API.post("/account/token/refresh/",{refresh : Cookies.get("refresh_token")}).then((response) => {
             setToken(response.data.access);
         }).catch((error)=>{
             clearToken();
-            dispatch(changeUser({is_login : false}));
+            Store.dispatch(changeUser({is_login : false}));
             return router.push("/auth/");
         })
     }return router.push("/auth/");

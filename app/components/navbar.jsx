@@ -26,9 +26,9 @@ const Navbar = () => {
                         <FaCartShopping className="size-8 w-full border-r-2 px-2" />
                     </Link>
                 </div>
-                <div className="col-span-2">
+                <div className={isLogin ? "col-span-2" : "col-span-3"}>
                     {
-                        isLogin ?
+                        !isLogin ?
                             <ProfileDropDown>
                                 <Link href={"/"} className="grid grid-cols-2 items-center justify-center p-1">
                                     <FaCaretDown className="size-4 col-span-1" />

@@ -1,10 +1,11 @@
 import {lazy} from "react";
 // components 
-const LoginOtpForm = lazy(()=> import( "./components/loginOtpForm"));
+const Info = lazy(() => import("./components/info"));
+
 const Page = () => {
     return (
         <div>
-            <LoginOtpForm />
+            <Info />
         </div>
     )
 };export default Page;

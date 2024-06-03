@@ -54,10 +54,14 @@ const LoginOtpForm = () => {
             dispatch(changeUser({is_login : true}));
             return router.push("/");
         }).catch((error)=> {
+            console.log(error.response.data);
             switch(error.response.data["detail"]){
                 case "required-otp" : {
                     console.log("otp is required"); 
                     toast.error("شما هنوز کد تایید را وارد نکرده")
+                }
+                case "wrong-email-otp" : {
+                    toast.error("کد تایید وارد شده اشتباه می باشد")
                 }
             }
             console.log(error.response.data["detail"] );

@@ -1,6 +1,6 @@
+import {lazy} from "react";
 // components 
-import GetCart from "./components/getCart";
-
+const GetCart = lazy(() => import("./components/getCart"));
 const Page = () => {
     return (
         <div>

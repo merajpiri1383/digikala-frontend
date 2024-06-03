@@ -1,8 +1,6 @@
 
 const Page = () => {
     return (
-        <div>
-            profile page 
-        </div>
+        <>dsd</>
     )
 };export default Page ;

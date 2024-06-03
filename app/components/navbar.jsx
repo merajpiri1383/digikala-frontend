@@ -10,14 +10,41 @@ import { FaCaretDown } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 // redux 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeUser } from "../../lib/reducers/user";
 // components 
 import ProfileDropDown from "./profileDropdown";
+// API 
+import API, { handle401Error } from "../../lib/config/api";
+// react tools 
+import { useEffect } from "react";
+
 
 
 const Navbar = () => {
     const isLogin = useSelector((state) => state.user.is_login);
-
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    useEffect(() => {
+        (async () => {
+            console.log("get data form api for user");
+            await API.get("/user/").then((response) => {
+                console.log("API")
+                console.log(response.data);
+                dispatch(changeUser({
+                    email: response.data.email,
+                    is_login : true
+                }))
+            }).catch((error) => {
+                console.log(error);
+                try {
+                    console.log(error.response.data);
+                    error.response.status === 401 && handle401Error(router);
+                } catch { }
+            })
+        })();
+    }, []);
+    console.log(user);
     return (
         <div className="lg:grid-cols-9 lg:grid p-3">
             <div className="hidden lg:grid p-2 gap-2 lg:col-span-4 grid-cols-10 items-center">
@@ -28,12 +55,12 @@ const Navbar = () => {
                 </div>
                 <div className={isLogin ? "col-span-2" : "col-span-3"}>
                     {
-                        !isLogin ?
+                        isLogin ?
                             <ProfileDropDown>
-                                <Link href={"/"} className="grid grid-cols-2 items-center justify-center p-1">
+                                <li className="grid grid-cols-2 items-center justify-center p-1">
                                     <FaCaretDown className="size-4 col-span-1" />
                                     <FaRegUser className="size-8 col-span-1" />
-                                </Link>
+                                </li>
                             </ProfileDropDown> :
                             <Link href={"/auth"} className=" flex align-items-center w-full items-center 
                         flex-row-reverse self-center justify-center py-2 outline outline-1 outline-gray-300

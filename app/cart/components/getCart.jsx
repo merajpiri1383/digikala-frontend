@@ -8,15 +8,16 @@ import {useRouter} from "next/navigation";
 
 const GetCart = () => {
     const router = useRouter();
-    ( async ()=>{
-        await API.get("/cart/").then((response)=>{
-        }).catch((error) => {
-           try{
-            error.response.status === 401 && handle401Error(router);
-           }catch{}
-        })
-    })()
-
+    // ( async ()=>{
+    //     await API.get("/cart/").then((response)=>{
+    //     }).catch((error) => {
+    //        try{
+    //         error.response.status === 401 && handle401Error(router);
+    //        }catch{
+    //         handle401Error(router);
+    //        }
+    //     })
+    // })();
     return (
         <div>
             get cart 

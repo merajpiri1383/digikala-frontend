@@ -1,0 +1,55 @@
+
+.modal{
+    position: absolute;
+    left: 20vw;
+    right: 20vw;
+    top: 25%;
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white !important;
+    width: 100%;
+    z-index: 6000;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+@keyframes show{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes hide {
+    0%{
+        transform: scale(1);
+    }
+
+    100%{
+        transform: scale(0);
+    }
+}
+
+.modal-show{
+    animation: show both 500ms;
+}
+
+.modal-hide {
+    animation:  hide both 500ms;
+}
+
+.modal-black{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.363);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: 300ms;
+}

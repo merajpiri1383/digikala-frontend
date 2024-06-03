@@ -36,4 +36,5 @@ const handle401Error = async (router) => {
 
 const clearToken = () => {
     Cookies.remove("access_token");
+    API.defaults.headers.common.Authorization = null;
 };export {clearToken};

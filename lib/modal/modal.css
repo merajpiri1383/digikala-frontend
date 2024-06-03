@@ -3,18 +3,19 @@
     position: absolute;
     left: 20vw;
     right: 20vw;
-    top: 25%;
+    top: 30%;
     z-index: 5000;
     display: flex;
     justify-content: center;
 }
 
 .modal-content {
-    background-color: white !important;
     width: 100%;
     z-index: 6000;
-    padding: 30px;
     border-radius: 10px;
+    background-color: initial;
+    display: flex;
+    justify-content: center;
 }
 
 @keyframes show{

@@ -22,9 +22,11 @@ import { useEffect } from "react";
 
 
 const Navbar = () => {
+    
     const isLogin = useSelector((state) => state.user.is_login);
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
+
+
     useEffect(() => {
         (async () => {
             console.log("get data form api for user");
@@ -44,7 +46,8 @@ const Navbar = () => {
             })
         })();
     }, []);
-    console.log(user);
+
+
     return (
         <div className="lg:grid-cols-9 lg:grid p-3">
             <div className="hidden lg:grid p-2 gap-2 lg:col-span-4 grid-cols-10 items-center">

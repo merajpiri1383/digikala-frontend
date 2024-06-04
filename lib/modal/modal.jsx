@@ -1,11 +1,10 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Modal = ({trigger,children}) => {
+
     const [showModal,setShowModal] = useState(false);
-    useEffect(()=> {
-        console.log(showModal);
-    },[showModal]);
+
     return (
         <div>
             <div onClick={() => setShowModal(!showModal)} >{trigger}</div>

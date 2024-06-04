@@ -1,14 +1,14 @@
 // styles 
 import "../styles/global.css";
 import 'reactjs-popup/dist/index.css';
-// components 
-import Navbar from "./components/navbar";
-// redux 
+import "../lib/modal/modal.css";
+
+import {lazy } from "react";
+const Navbar = lazy(() => import("./components/navbar"));
 import StoreProvider from "./storeProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// Modal 
-import "../lib/modal/modal.css";
+
 
 
 // config 

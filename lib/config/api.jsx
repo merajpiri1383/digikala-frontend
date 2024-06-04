@@ -23,15 +23,23 @@ const setToken = (access_token,refresh_token=null) => {
 };export {setToken};
 
 const handle401Error = async (router) => {
+    
+    console.log("handle 401 error")
+
     if(Cookies.get('refresh_token')){
+        console.log("refresh token exist")
+
         await API.post("/account/token/refresh/",{refresh : Cookies.get("refresh_token")}).then((response) => {
             setToken(response.data.access);
+            console.log("resposne is 200")
+            return router.push("/")
         }).catch((error)=>{
             clearToken();
             Store.dispatch(changeUser({is_login : false}));
+            console.log("refresh token expired")
             return router.push("/auth/");
         })
-    }return router.push("/auth/");
+    }
 };export {handle401Error};
 
 const clearToken = () => {

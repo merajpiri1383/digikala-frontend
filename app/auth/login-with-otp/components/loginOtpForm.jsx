@@ -1,25 +1,16 @@
 "use client"
-// react reveal 
 import { Zoom } from "react-awesome-reveal";
-// logo 
 import Logo from "../../../../static/logo.svg";
 import Image from 'next/image';
-// icon 
 import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa";
-// redux 
 import { useSelector , useDispatch } from "react-redux";
 import { changeUser } from "../../../../lib/reducers/user";
-// react tools 
 import { useState,useEffect } from "react";
-// regex 
 const inputRegex = /^([0-9]){1,}$/;
-// next js tools 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// API 
 import API,{setToken,clearToken} from "../../../../lib/config/api";
-// react toastify 
 import { toast } from "react-toastify";
 
 
@@ -41,23 +32,24 @@ const LoginOtpForm = () => {
     };
 
     const sendOTPEmail = async () => {
-        console.log("send otp code")
         await API.post("/account/send-otp/",{email : user.email}).then().catch();
     };
 
     const formhandeler = async (e) => {
         clearToken();
         e.preventDefault();
-        console.log("submit");
         user.email && await API.post("/account/activate/",{email : user.email,otp : otp}).then((response) => {
             setToken(response.data.access_token,response.data.refresh_token);
-            dispatch(changeUser({is_login : true}));
+            dispatch(changeUser({
+                is_login : true , 
+                is_staff : response.data.user.is_staff ,
+                is_manager : response.data.user.is_manager
+            }));
             return router.push("/");
         }).catch((error)=> {
             console.log(error.response.data);
             switch(error.response.data["detail"]){
                 case "required-otp" : {
-                    console.log("otp is required"); 
                     toast.error("شما هنوز کد تایید را وارد نکرده")
                 }
                 case "wrong-email-otp" : {

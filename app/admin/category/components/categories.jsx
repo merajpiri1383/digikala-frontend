@@ -9,6 +9,23 @@ import { useSelector } from "react-redux";
 import { Zoom, Slide } from "react-awesome-reveal";
 
 
+const Category = ({ category }) => {
+    return (
+        <div className="border rounded-lg my-2 hover:scale-105 
+            transition duration-200 hover:shadow-xl" >
+            <img
+                className="object-cover h-48 rounded-lg"
+                src={category.image}
+                alt={category.name}
+            />
+            <p className="my-3 text-lg text-center">
+                {category.name}
+            </p>
+        </div>
+    )
+};
+
+
 
 const Categorys = () => {
 
@@ -23,7 +40,6 @@ const Categorys = () => {
 
             await API.get("/category/").then((response) => {
                 setCategories(response.data);
-
                 setTimeout(() => {
                     setShowLoading(false);
                 }, 400)
@@ -51,17 +67,12 @@ const Categorys = () => {
                                 {
                                     categories.map((category, index) => {
                                         return (
-                                            <Link href={"/"} className="col-span-4">
+                                            <Link 
+                                            href={`/admin/category/${category.id}/`} 
+                                            key={index}
+                                            className="col-span-4">
                                                 <Slide duration={200}>
-                                                    <div className="border rounded-lg my-2 hover:scale-105 
-                                                    transition duration-200 hover:shadow-xl">
-                                                        <img  
-                                                        className="object-cover h-48 rounded-lg"
-                                                        src={category.image}
-                                                        alt={category.name}
-                                                        />
-                                                        <p className="my-3 text-lg text-center">{category.name}</p>
-                                                    </div>
+                                                    <Category category={category} />
                                                 </Slide>
                                             </Link>
                                         )

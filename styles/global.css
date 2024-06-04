@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+    font-family : yekan ;
+    src: url("../static/fonts/BYekan+\ Bold.ttf"),url("../static/fonts/BYekan+.ttf");
+}
+
+*{
+    font-family: yekan !important;
+}
+
 .index-10000{
     z-index: 10000;
 }

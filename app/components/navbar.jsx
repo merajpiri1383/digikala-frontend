@@ -1,22 +1,15 @@
 "use client"
-// logo 
 import Logo from "../../static/logo.svg";
-// icons 
 import { FaCartShopping } from "react-icons/fa6";
 import { LuLogIn } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
-// next tools 
 import Link from "next/link";
 import Image from "next/image";
-// redux 
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "../../lib/reducers/user";
-// components 
 import ProfileDropDown from "./profileDropdown";
-// API 
 import API, { handle401Error } from "../../lib/config/api";
-// react tools 
 import { useEffect } from "react";
 
 
@@ -29,23 +22,20 @@ const Navbar = () => {
 
     useEffect(() => {
         (async () => {
-            console.log("get data form api for user");
             await API.get("/user/").then((response) => {
-                console.log("API")
-                console.log(response.data);
                 dispatch(changeUser({
                     email: response.data.email,
-                    is_login : true
+                    is_login : true,
+                    is_staff : response.data.is_staff,
+                    is_manager : response.data.is_manager
                 }))
             }).catch((error) => {
-                console.log(error);
                 try {
-                    console.log(error.response.data);
                     error.response.status === 401 && handle401Error(router);
                 } catch { }
             })
         })();
-    }, []);
+    }, [isLogin]);
 
 
     return (

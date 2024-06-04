@@ -16,25 +16,6 @@ const RightPannel = () => {
     const router = useRouter();
     const dispatch = useDispatch();
 
-
-    useEffect(() => {
-        (async () => {
-            await API.get("/user/").then((response) => {
-                console.log(response.data);
-                dispatch(changeUser({
-                    email: response.data.email,
-                    is_login: true,
-                    is_staff : response.data.is_staff ,
-                    is_manager : response.data.is_manager
-                }))
-            }).catch((error) => {
-                console.log(error)
-                if (error.response.status === 401) {
-                    handle401Error(router);
-                }
-            })
-        })();
-    }, []);
     return (
         <Zoom duration={300}>
             <div className="p-5">

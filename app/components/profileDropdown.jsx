@@ -10,7 +10,7 @@ import Exit from "./exit";
 import { changeUser } from "../../lib/reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import API,{ clearToken ,handle401Error} from "../../lib/config/api";
+import { clearToken } from "../../src/api";
 
 const ProfileDropDown = ({ children }) => {
 

@@ -1,20 +1,13 @@
 "use client"
 import { FiEdit3 } from "react-icons/fi";
-import API, { handle401Error } from "../../../lib/config/api";
-import { useDispatch, useSelector } from "react-redux";
-import { changeUser } from "../../../lib/reducers/user";
-import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 import Link from "next/link";
-import { useEffect } from "react";
 import { Zoom } from "react-awesome-reveal";
 
 
 const RightPannel = () => {
 
-
     const user = useSelector((state) => state.user);
-    const router = useRouter();
-    const dispatch = useDispatch();
 
     return (
         <Zoom duration={300}>

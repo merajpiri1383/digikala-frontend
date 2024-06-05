@@ -1,6 +1,6 @@
 "use client"
 import { Zoom } from "react-awesome-reveal";
-import Logo from "../../../../static/logo.svg";
+import Logo from "../../../../public/logo.svg";
 import Image from 'next/image';
 import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa";
@@ -10,7 +10,7 @@ import { useState,useEffect } from "react";
 const inputRegex = /^([0-9]){1,}$/;
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import API,{setToken,clearToken} from "../../../../lib/config/api";
+import API,{setToken,clearToken} from "../../../../src/api";
 import { toast } from "react-toastify";
 
 

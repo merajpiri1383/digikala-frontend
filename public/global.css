@@ -4,7 +4,7 @@
 
 @font-face{
     font-family : yekan ;
-    src: url("../static/fonts/BYekan+\ Bold.ttf"),url("../static/fonts/BYekan+.ttf");
+    src: url("fonts/BYekan+.ttf"),url("fonts/BYekan+\ Bold.ttf");
 }
 
 *{

@@ -2,7 +2,7 @@
 import Loading from "../../../../components/loading";
 import { useState , useEffect } from "react";
 import { useParams } from "next/navigation";
-import API,{ handle401Error ,getUser } from "../../../../../lib/config/api";
+import API,{ handle401Error ,getUser } from "../../../../../src/api";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 

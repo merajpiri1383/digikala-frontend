@@ -1,5 +1,5 @@
 "use client"
-import Logo from "../../static/logo.svg";
+import Logo from "../../public/logo.svg";
 import { FaCartShopping } from "react-icons/fa6";
 import { LuLogIn } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa";
@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "../../lib/reducers/user";
 import ProfileDropDown from "./profileDropdown";
-import API, { handle401Error } from "../../lib/config/api";
+import API, { handle401Error } from "../../src/api";
 import { useEffect } from "react";
 
 

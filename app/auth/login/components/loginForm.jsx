@@ -1,7 +1,7 @@
 "use client"
 
 import { Zoom } from "react-awesome-reveal";
-import Logo from "../../../../static/logo.svg";
+import Logo from "../../../../public/logo.svg";
 import Image from "next/image";
 import { FaRegEye } from "react-icons/fa";
 import { PiEyeClosedBold } from "react-icons/pi";
@@ -9,7 +9,7 @@ import { FaAngleLeft } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
 import { useState } from "react";
 import Link from "next/link";
-import API, { handle401Error, setToken } from "../../../../lib/config/api";
+import API, { handle401Error, setToken } from "../../../../src/api";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";

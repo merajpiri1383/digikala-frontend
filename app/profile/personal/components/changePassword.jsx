@@ -1,7 +1,7 @@
 "use client"
 
 import {  useState } from "react";
-import API,{handle401Error} from "../../../../lib/config/api";
+import API,{handle401Error} from "../../../../src/api";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 

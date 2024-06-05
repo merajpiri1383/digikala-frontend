@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { Zoom } from "react-awesome-reveal";
-import API, { handle401Error } from "../../../../lib/config/api";
+import API,{handle401Error} from "../../../../src/api";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Loading from "../../../components/loading";

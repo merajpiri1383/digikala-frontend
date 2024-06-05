@@ -1,19 +1,14 @@
 "use client"
 
-// react and next tools 
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// other tools   
-import Logo from "../../../static/logo.svg";
-import API,{clearToken} from "../../../lib/config/api";
-// react toastify
+import Logo from "../../../public/logo.svg";
+import API,{clearToken} from "../../../src/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// redux tools 
 import { useDispatch } from "react-redux";
 import { changeUser } from "../../../lib/reducers/user";
-// reveal 
 import { Zoom } from "react-awesome-reveal";
 
 

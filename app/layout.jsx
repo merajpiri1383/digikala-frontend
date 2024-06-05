@@ -1,6 +1,5 @@
 // styles 
-import "../styles/global.css";
-import 'reactjs-popup/dist/index.css';
+import "../public/global.css";
 import "../lib/modal/modal.css";
 
 import {lazy } from "react";

@@ -2,7 +2,7 @@
 
 import Loading from "../../../components/loading";
 import { useState, useEffect } from "react";
-import API, { handle401Error } from "../../../../lib/config/api";
+import API, { handle401Error } from "../../../../src/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSelector } from "react-redux";

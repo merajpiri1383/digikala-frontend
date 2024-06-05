@@ -1,7 +1,10 @@
+import {lazy} from "react";
+const Categories = lazy(() => import("./components/categories"));
+
 const Page = () => {
     return (
         <div>
-            <p>sds</p>
+            <Categories />
         </div>
     )
 };export default Page ;

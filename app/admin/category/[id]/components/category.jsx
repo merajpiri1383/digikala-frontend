@@ -2,7 +2,7 @@
 import Loading from "../../../../components/loading";
 import { useState , useEffect } from "react";
 import { useParams } from "next/navigation";
-import API,{ handle401Error } from "../../../../../lib/config/api";
+import API,{ handle401Error ,getUser } from "../../../../../lib/config/api";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -15,6 +15,10 @@ const Category = () => {
     const [name,setName] = useState();
     const [file,setFile] = useState();
     const formData = new FormData();
+
+    useEffect(() => {
+        getUser();
+    },[]);
 
     useEffect(() => {
 

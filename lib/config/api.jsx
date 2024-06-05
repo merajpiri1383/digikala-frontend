@@ -11,7 +11,7 @@ const API = axios.create({
 API.interceptors.request.use((config) => {
     if(Cookies.get("access_token")){
         config.headers.Authorization = `Bearer ${Cookies.get("access_token")}`;
-        Store.dispatch(changeUser({is_login : true}));
+        !Store.getState().user.email && getUser()
     }
     return config;
 });
@@ -23,20 +23,15 @@ const setToken = (access_token,refresh_token=null) => {
 };export {setToken};
 
 const handle401Error = async (router) => {
-    
-    console.log("handle 401 error")
 
     if(Cookies.get('refresh_token')){
-        console.log("refresh token exist")
 
         await API.post("/account/token/refresh/",{refresh : Cookies.get("refresh_token")}).then((response) => {
             setToken(response.data.access);
-            console.log("resposne is 200")
             return router.push("/")
         }).catch((error)=>{
             clearToken();
             Store.dispatch(changeUser({is_login : false}));
-            console.log("refresh token expired")
             return router.push("/auth/");
         })
     }
@@ -46,3 +41,25 @@ const clearToken = () => {
     Cookies.remove("access_token");
     API.defaults.headers.common.Authorization = null;
 };export {clearToken};
+
+const getUser = async (router=null) => {
+
+    await API.get("/user/").then((response) => {
+        Store.dispatch(changeUser({
+            email : response.data.email,
+            is_staff : response.data.is_staff ,
+            is_manager : response.data.is_manager , 
+            is_login : true 
+        }))
+    }).catch((error) => {
+        try{
+            if(error.response.status === 401 ){
+                router && handle401Error(router);
+            }else{
+                router && router.push('/auth/login/');
+            }
+        }catch{
+            router && router.push("/auth/login/");
+        }
+    })
+};export {getUser};

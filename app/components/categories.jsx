@@ -2,6 +2,7 @@
 import API from "../../src/api";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { Zoom } from "react-awesome-reveal";
 
 const Categories = () => {
 
@@ -32,16 +33,18 @@ const Categories = () => {
                 {
                     categories && categories.map((category, index) => {
                         return (
-                            <div className="col-span-1" key={index}>
-                                <img
-                                    src={category.image}
-                                    className="h-36 object-cover rounded-full hover:scale-110 
+                            <Zoom key={index}>
+                                <div className="col-span-1 grid grdi-cols-1 justify-center">
+                                    <img
+                                        src={category.image}
+                                        className="h-32 w-32 object-cover rounded-full hover:scale-110 
                                     transition duration-200"
-                                />
-                                <p className="text-center text-md text-stone-600 font-md">
-                                    {category.name}
-                                </p>
-                            </div>
+                                    />
+                                    <p className="text-center text-md text-stone-600 font-md">
+                                        {category.name}
+                                    </p>
+                                </div>
+                            </Zoom>
                         )
                     })
                 }

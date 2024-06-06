@@ -8,7 +8,7 @@ import API,{clearToken} from "../../../src/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import { changeUser } from "../../../lib/reducers/user";
+import { changeUser } from "../../../src/reducers/user";
 import { Zoom } from "react-awesome-reveal";
 
 

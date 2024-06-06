@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa";
 import { useSelector , useDispatch } from "react-redux";
-import { changeUser } from "../../../../lib/reducers/user";
+import { changeUser } from "../../../../src/reducers/user";
 import { useState,useEffect } from "react";
 const inputRegex = /^([0-9]){1,}$/;
 import Link from "next/link";

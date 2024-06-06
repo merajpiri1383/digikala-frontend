@@ -13,7 +13,7 @@ import API, { handle401Error, setToken } from "../../../../src/api";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { changeUser } from "../../../../lib/reducers/user";
+import { changeUser } from "../../../../src/reducers/user";
 
 
 const LoginForm = () => {

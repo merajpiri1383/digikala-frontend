@@ -1,6 +1,6 @@
 
 .modal{
-    position: absolute;
+    position: fixed;
     left: 20vw;
     right: 20vw;
     top: 5%;
@@ -46,7 +46,7 @@
 }
 
 .modal-black{
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.363);
     top: 0;
     bottom: 0;

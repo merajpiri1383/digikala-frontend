@@ -1,6 +1,6 @@
 // styles 
 import "../public/global.css";
-import "../lib/modal/modal.css";
+import "../src/modal/modal.css";
 
 import {lazy } from "react";
 const Navbar = lazy(() => import("./components/navbar"));

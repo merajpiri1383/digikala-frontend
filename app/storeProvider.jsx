@@ -1,8 +1,6 @@
 'use client'
-// redux tools 
 import {Provider} from "react-redux";
-import Store from "../lib/store";
-// react tools 
+import Store from "../src/store";
 import { useRef } from "react";
 
 const StoreProvider = ({ children }) => {

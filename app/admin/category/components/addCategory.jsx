@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Loading from "../../../components/loading";
 import { useDispatch } from "react-redux";
-import { changeToggle } from "../../../../lib/reducers/category";
+import { changeToggle } from "../../../../src/reducers/category";
 
 const AddCategory = () => {
 

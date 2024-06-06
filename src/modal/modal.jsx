@@ -1,9 +1,15 @@
 "use client"
-import { useState } from "react";
+import { useState ,useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Modal = ({trigger,children}) => {
-
     const [showModal,setShowModal] = useState(false);
+    
+    const toggle = useSelector((state) => state.modal.exit);
+
+    useEffect(() => {
+        setShowModal(false);
+    },[toggle])
 
     return (
         <div>

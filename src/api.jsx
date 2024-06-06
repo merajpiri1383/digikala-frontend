@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { changeUser } from "../lib/reducers/user";
-import Store from "../lib/store";
+import { changeUser } from "./reducers/user";
+import Store from "./store";
 
 const API = axios.create({
     baseURL : "http://127.0.0.1:8000/",
@@ -11,7 +11,6 @@ const API = axios.create({
 API.interceptors.request.use((config) => {
     if(Cookies.get("access_token")){
         config.headers.Authorization = `Bearer ${Cookies.get("access_token")}`;
-        // !Store.getState().user.email && getUser()
     }
     return config;
 });
@@ -31,7 +30,6 @@ const handle401Error = async (router) => {
             return router.push("/")
         }).catch((error)=>{
             clearToken();
-            Store.dispatch(changeUser({is_login : false}));
             return router.push("/auth/");
         })
     }
@@ -40,6 +38,12 @@ const handle401Error = async (router) => {
 const clearToken = () => {
     Cookies.remove("access_token");
     API.defaults.headers.common.Authorization = null;
+    Store.dispatch(changeUser({
+        is_login : false , 
+        email : null ,
+        is_manager : null ,
+        is_staff : null
+    }))
 };export {clearToken};
 
 const getUser = async (router=null) => {

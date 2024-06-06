@@ -1,44 +1,22 @@
 "use client"
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { IoExitOutline } from "react-icons/io5";
-import Swal from 'sweetalert2';
-import withReactContent from "sweetalert2-react-content";
 import { FaAngleLeft } from "react-icons/fa";
 import Exit from "./exit";
-import { changeUser } from "../../lib/reducers/user";
-import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
-import { clearToken } from "../../src/api";
+import { useSelector } from "react-redux";
+import Modal from "../../src/modal/modal";
 
 const ProfileDropDown = ({ children }) => {
 
     const [showDropdown, setShowDropdown] = useState(false);
     const user = useSelector((state) => state.user);
-    const [showAdmin,setShowAdmin] = useState(false);
-    const SWAL = withReactContent(Swal);
-    const router = useRouter();
-    const dispatch = useDispatch();
+    const [showAdmin, setShowAdmin] = useState(false);
 
-    const showAlert = () => {
-        SWAL.fire({
-            html: <Exit self={SWAL} />,
-            width: "40rem",
-            showConfirmButton: false,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                dispatch(changeUser({ is_login: false }));
-                clearToken();
-                Cookies.remove("refresh_token");
-                router.push("/auth");
-            }
-        })
-    };
 
     useEffect(() => {
         setShowAdmin(user.is_staff || user.is_manager)
-    },[user.is_staff,user.is_manager])
+    }, [user.is_staff, user.is_manager])
 
     return (
         <div className="relative">
@@ -64,11 +42,11 @@ const ProfileDropDown = ({ children }) => {
                     </Link>
                 }
 
-                <li onClick={() => showAlert()} className="p-1 m-1 text-center grid grid-cols-5 items-center 
+                <Modal trigger={<li className="p-1 m-1 text-center grid grid-cols-5 items-center 
                 hover:bg-gray-100 p-3 cursor-pointer active:bg-gray-200">
                     <p className="col-span-4">خروج از حساب کاربری</p>
                     <IoExitOutline className="col-span-1 size-8" />
-                </li>
+                </li>} children={<Exit />} />
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import { FaCaretDown } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { changeUser } from "../../lib/reducers/user";
+import { changeUser } from "../../src/reducers/user";
 import ProfileDropDown from "./profileDropdown";
 import API, { handle401Error } from "../../src/api";
 import { useEffect } from "react";

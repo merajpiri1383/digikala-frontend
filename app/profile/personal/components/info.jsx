@@ -1,16 +1,11 @@
 "use client"
-//react reveal awesome 
 import { Fade } from "react-awesome-reveal";
-// icons 
 import { FiPlus } from "react-icons/fi";
 import { FiEdit3 } from "react-icons/fi";
-// next js 
 import Link from "next/link";
-// components 
 import { lazy } from "react";
 const ChangePassword = lazy(() => import("./changePassword"));
-// Modal 
-import Modal  from "../../../../lib/modal/modal";
+import Modal  from "../../../../src/modal/modal";
 
 const Info = () => {
     return (

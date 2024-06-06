@@ -27,7 +27,6 @@ const AuthForm = () => {
         if (passwordRegex.test(e.target.value)) {
             setEmail(e.target.value);
             setEmailValid(true);
-            dispath(changeUser({ email: e.target.value }));
         } else {
             setEmailValid(false);
         }

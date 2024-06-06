@@ -1,12 +1,14 @@
 import { lazy } from "react";
 const Category = lazy(() => import("./components/category"));
 const AddSubCategory = lazy(() => import("./components/addSubCategory"));
+const Subcategories = lazy(() => import("./components/subCategories"));
 
 const Page = () => {
     return (
-        <div>
+        <>
             <Category />
             <AddSubCategory />
-        </div>
+            <Subcategories />
+        </>
     )
-};export default Page ;
+}; export default Page;

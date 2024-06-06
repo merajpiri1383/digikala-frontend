@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import API,{handle401Error} from "../../../../../src/api";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { subCategoryToggle } from "../../../../../src/reducers/category";
+import { toast } from "react-toastify";
 
 const AddSubCategory = () => {
 
@@ -13,21 +16,28 @@ const AddSubCategory = () => {
     const formData = new FormData();
     const params = useParams();
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const submitHandeler = async (e) => {
+        setShowLoading(true);
         e.preventDefault();
         formData.append("name",name);
         formData.append("image",file);
         formData.append("category",params.id);
 
         await API.post("/category/sub-category/",formData).then((response) => {
-            console.log(response.data);
+            toast.success("زیر مجموعه دسته بندی افزوده شد");
+            dispatch(subCategoryToggle());
+            setTimeout(() => {
+                setShowLoading(false);
+            },400);
         }).catch((error) =>{
             try{
                 error.response.status === 401 && handle401Error(router);
                 console.log(error.response.data)
             }catch{}
         })
+        dispatch(subCategoryToggle())
     };
 
     useEffect(() => {

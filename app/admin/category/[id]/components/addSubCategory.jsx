@@ -54,21 +54,21 @@ const AddSubCategory = () => {
                 !showLoading && <>
                     <form className="border p-6 my-6 rounded-lg" onSubmit={submitHandeler}>
                         <p className="text-right font-semibold text-lg">افزودن زیر مجموعه دسته بندی</p>
-                        <div className="my-3 px-4">
-                            <p className="text-right text-lg my-3">نام</p>
+                        <div className="my-3 px-4 relative border rounded-lg my-6">
+                            <p className="-top-4 text-rose-500 bg-white px-6 text-lg absolute right-6">نام</p>
                             <input
                                 type="text" required
-                                className="w-full outline-none border p-3 text-lg text-right rounded-lg"
+                                className="w-full outline-none  p-3 text-lg text-right"
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
-                        <div className="my-3 px-4">
-                            <p className="text-right text-lg my-3">تصویر</p>
+                        <div className="my-3 px-4 relative border rounded-lg my-6">
+                            <p className="-top-4 text-rose-500 bg-white px-6 text-lg absolute right-6">تصویر</p>
                             <input 
                             type="file" required
                             accept="image/jpg,image/png,image/jpeg"
                             onChange={(e) => setFile(e.target.files[0])}
-                            className="w-full text-right rounded-lg outline-none border p-3"
+                            className="w-full text-right  outline-none p-3"
                             />
                         </div>
                         <button type="submit" 

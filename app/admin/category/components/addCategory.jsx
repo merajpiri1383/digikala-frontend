@@ -47,18 +47,20 @@ const AddCategory = () => {
             {
                 !showLoading && <form className="w-full border rounded-lg p-6 shadow" onSubmit={submitHandeler}>
                     <p className="text-right font-semibold text-lg my-3">افزودن دسته بندی</p>
-                    <div className="my-2 p-2">
-                        <p className="text-right text-lg text-stone-500">نام </p>
+                    <div className="my-2 p-2 relative border rounded-lg h-fit my-6">
+                        <p className="text-rose-500 absolute -top-4 text-lg
+                        px-3 font-semibold right-6 bg-white">نام </p>
                         <input
                             type="text" required
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full outline-none border my-2 text-lg p-2 rounded-lg text-right text-stone-400" />
+                            className="w-full outline-none text-lg p-2 text-right text-stone-400" />
                     </div>
-                    <div className="my-2 p-2">
-                        <p className="text-right text-lg text-stone-500">تصویر </p>
+                    <div className="my-2 p-2 relative border rounded-lg h-fit my-6">
+                        <p className="text-rose-500 absolute -top-4 text-lg
+                        px-3 font-semibold right-6 bg-white">تصویر </p>
                         <input
                             type="file"
-                            className="w-full outline-none border my-2 text-lg p-2 rounded-lg text-right text-stone-400"
+                            className="w-full outline-none text-lg p-2 text-right text-stone-400"
                             accept="image/jpg,image/jpeg,image/png" required
                             onChange={(e) => setFile(e.target.files[0])}
                         />

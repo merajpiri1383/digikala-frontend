@@ -6,6 +6,7 @@ import API, { handle401Error } from "../../../../../src/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Subcategories = () => {
 
@@ -44,17 +45,20 @@ const Subcategories = () => {
                         {
                             subcategories.map((subcategory, index) => {
                                 return (
-                                    <Zoom>
-                                        <div key={index} className="col-span-1">
-                                            <img
-                                                src={subcategory.image}
-                                                alt={subcategory.name}
-                                                className="h-32 object-cover rounded-lg"
-                                            />
-                                            <p className="text-center">
-                                                {subcategory.name}
-                                            </p>
-                                        </div>
+                                    <Zoom key={index}>
+                                        <Link 
+                                        href={`/admin/category/${params.id}/${subcategory.id}/`}>
+                                            <div className="col-span-1">
+                                                <img
+                                                    src={subcategory.image}
+                                                    alt={subcategory.name}
+                                                    className="h-32 object-cover rounded-lg"
+                                                />
+                                                <p className="text-center">
+                                                    {subcategory.name}
+                                                </p>
+                                            </div>
+                                        </Link>
                                     </Zoom>
                                 )
                             })

@@ -4,6 +4,8 @@ import Loading from "../../../components/loading";
 import { Zoom } from "react-awesome-reveal";
 import API, { handle401Error } from "../../../../src/api";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import {toggleBrand} from "../../../../src/reducers/brand";
 
 const addBrand = () => {
 
@@ -12,6 +14,7 @@ const addBrand = () => {
     const form = new FormData();
     const [showLoading, setShowLoaing] = useState(true);
     const router = useRouter();
+    const dispacth = useDispatch();
 
     useEffect(() => {
         setTimeout(() => {
@@ -25,6 +28,7 @@ const addBrand = () => {
         name && form.append("name",name);
         image && form.append("image",image);
         await API.post("/category/brand/",form).then((response) => {
+            dispacth(toggleBrand());
             setTimeout(() =>{
                 setShowLoaing(false);
             },400);

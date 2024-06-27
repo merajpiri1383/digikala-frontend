@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Loading from "../../../components/loading";
 import { Zoom } from "react-awesome-reveal";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Brnads = () => {
 
@@ -33,18 +34,20 @@ const Brnads = () => {
             }
             {
                 !showLoading && <Zoom duration={200}>
-                    <div className="border rounded-lg my-6 p-6 grid grid-cols-4 gap-2">
+                    <div className="border rounded-lg my-6 p-6 grid grid-cols-4 gap-6">
                         {
-                            brands && brands.map((item,index) => {
+                            brands && brands.map((item, index) => {
                                 return (
-                                    <div key={index} className="col-span-1">
-                                        <img 
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="h-48 object-cover rounded-lg"
-                                        />
-                                        <p className="text-center text-lg font-semibold text-rose-500">{item.name}</p>
-                                    </div>
+                                    <Link key={index} href={`/admin/brand/${item.id}/`}>
+                                        <div className="col-span-1 transition duration-400 hover:scale-110">
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="h-48 object-cover rounded-lg"
+                                            />
+                                            <p className="text-center text-lg font-semibold text-rose-500">{item.name}</p>
+                                        </div>
+                                    </Link>
                                 )
                             })
                         }

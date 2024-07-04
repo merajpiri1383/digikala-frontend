@@ -9,10 +9,10 @@ import { useRouter } from "next/navigation";
 const Subcategory = () => {
 
     const [data, setData] = useState({
-        id: null ,
-        name: null ,
-        image: null ,
-        category: null ,
+        id: null,
+        name: null,
+        image: null,
+        category: null,
         products: []
     });
 
@@ -39,16 +39,24 @@ const Subcategory = () => {
     const submitHander = async (e) => {
         e.preventDefault();
         setShowLoading(true);
-        name && form.append("name",name);
-        file && form.append("image",file); 
-        await API.put(`/category/sub-category/${params.sub_id}/`,form).then((response) => {
+        name && form.append("name", name);
+        file && form.append("image", file);
+        await API.put(`/category/sub-category/${params.sub_id}/`, form).then((response) => {
             setTimeout(() => {
                 setShowLoading(false);
                 setData(Object.assign({}, { ...data }, { ...response.data }));
-            },400);
+            }, 400);
         }).catch((error) => {
             error.response.status === 401 && handle401Error(router);
         })
+    };
+
+    const deleteHander = async () => {
+        await API.delete(`/category/sub-category/${params.sub_id}/`).then(() => {
+            router.push(`/admin/category/${params.id}/`);
+        }).catch((e) => {
+            e.response.status === 401 &&  handle401Error(router);
+        });
     };
 
     return (
@@ -58,10 +66,10 @@ const Subcategory = () => {
             }
             {
                 !showLoading && <Zoom duration={200}>
-                    <form 
-                    onSubmit={submitHander}
-                    className="grid grid-cols-12 gap-5 border border-gray-200 p-5 rounded-lg" 
-                    method="file">
+                    <form
+                        onSubmit={submitHander}
+                        className="grid grid-cols-12 gap-5 border border-gray-200 p-5 rounded-lg"
+                        method="file">
                         <div className="col-span-4">
                             <img
                                 src={data.image}
@@ -85,10 +93,21 @@ const Subcategory = () => {
                                     className="outline-none w-full p-2"
                                     onChange={(e) => setFile(e.target.files[0])} />
                             </div>
-                            <button
-                                type="submit"
-                                className="text-white p-2 font-semibold bg-rose-500 rounded-md w-32 
-                                hover:bg-rose-600">ذخیره</button>
+
+                            <div className="grid grid-cols-8">
+
+                                <button
+                                    type="button"
+                                    onClick={deleteHander}
+                                    className="text-white p-2 font-semibold bg-rose-500 rounded-md w-32 
+                                    hover:bg-rose-600 col-span-2">حذف</button>
+
+                                <button
+                                    type="submit"
+                                    className="text-white p-2 font-semibold bg-rose-500 rounded-md w-32 
+                                    hover:bg-rose-600 col-span-2">ذخیره</button>
+
+                            </div>
                         </div>
                     </form>
                 </Zoom>

@@ -23,7 +23,6 @@ const Brand = () => {
                 setData(Object.assign({}, { ...response.data }));
                 setTimeout(() => setShowLoading(false), 400);
             }).catch((error) => {
-                console.log(error.response.data)
                 error.response.status === 401 && handle401Error(router);
             })
         })();
@@ -32,18 +31,25 @@ const Brand = () => {
     const submitHandeler = async (e) => {
         e.preventDefault();
         setShowLoading(true);
-        console.log("hee")
-        name && form.append("name",name);
-        image && form.append("image",image);
-        await API.put(`/category/brand/${params.id}/`,form).then((response) => {
-            setData(Object.assign({},{...response.data}));
+        name && form.append("name", name);
+        image && form.append("image", image);
+        await API.put(`/category/brand/${params.id}/`, form).then((response) => {
+            setData(Object.assign({}, { ...response.data }));
             setTimeout(() => {
                 setShowLoading(true);
-            } , 400);
+            }, 400);
         }).catch((error) => {
             error.response.status === 401 && handle401Error(router);
         })
 
+    };
+
+    const deleteHandeler = async () => {
+        await API.delete(`/category/brand/${params.id}/`, form).then((response) => {
+            router.push("/admin/brand/");
+        }).catch((error) => {
+            error.response.status === 401 && handle401Error(router);
+        })
     };
 
     return (
@@ -79,8 +85,18 @@ const Brand = () => {
                                     onChange={(e) => setImage(e.target.files[0])}
                                 />
                             </div>
-                            <button className="bg-rose-500 text-white p-3 w-24 rounded-lg 
-                        hover:bg-rose-600 text-lg font-semibold" type="submit">ذخیره</button>
+
+                            <div className="grid grid-cols-8">
+                                <button
+                                    className="bg-rose-500 text-white p-3 w-24 rounded-lg 
+                                hover:bg-rose-600 text-lg font-semibold col-span-2"
+                                    type="submit">ذخیره</button>
+                                <button
+                                    onClick={deleteHandeler}
+                                    className="bg-rose-500 text-white p-3 w-24 rounded-lg 
+                                hover:bg-rose-600 text-lg font-semibold col-span-2"
+                                    type="button">حذف</button>
+                            </div>
                         </div>
                     </form>
                 </Zoom>

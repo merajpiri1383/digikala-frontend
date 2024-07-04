@@ -54,6 +54,14 @@ const Category = () => {
         })
     };
 
+    const deleteHandeler = async () => {
+        setShowLoading(true);
+        await API.delete(`/category/${params.id}/`).then(() => {
+            setTimeout(() => setShowLoading(false) , 400);
+            router.push("/admin/category/");
+        }).catch()
+    };
+
 
     return (
         <>
@@ -85,10 +93,17 @@ const Category = () => {
                                 className="outline-none border p-3 text-lg rounded-md w-full text-right"
                             />
 
-                            <div className="grid col-span-4">
+                            <div className="grid grid-cols-8 gap-12">
+                            <button
+                                type="button"
+                                className="text-white bg-rose-500 rounded-md font-semibold hover:bg-rose-700 w-40 p-2 col-span-2"
+                                onClick={deleteHandeler}
+                            >حذف</button>
+                            
                             <button
                                 type="submit"
-                                className="text-white bg-rose-500 rounded-md font-semibold hover:bg-rose-700 w-40 p-2"
+                                className="text-white bg-rose-500 rounded-md font-semibold hover:bg-rose-700 w-40 p-2 
+                                col-span-2"
                             >ذخیره</button>
                             </div>
                         </form>

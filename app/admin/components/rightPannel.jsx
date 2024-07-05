@@ -12,8 +12,8 @@ const RightPannel = () => {
                 <Link href={"/admin/brand/"} className="text-center">
                     <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2 border-b">برند ها</p>
                 </Link>
-                <Link href={"/"} className="text-center">
-                    <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2">item 1</p>
+                <Link href={"/admin/product/"} className="text-center">
+                    <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2">افزودن محصول</p>
                 </Link>
             </div>
         </Zoom>

@@ -60,27 +60,22 @@ const Categorys = () => {
             }
             {
                 !showLoading && <>
-                    <Zoom duration={300}>
-                        <div className="border my-6 rounded-lg shadow p-6">
-                            <p className="font-semibold text-right text-lg">دسته بندی ها</p>
-                            <div className="grid grid-cols-12 gap-3 p-3">
-                                {
-                                    categories.map((category, index) => {
-                                        return (
-                                            <Link 
-                                            href={`/admin/category/${category.id}/`} 
-                                            key={index}
-                                            className="col-span-4">
-                                                <Slide duration={200}>
-                                                    <Category category={category} />
-                                                </Slide>
+                    <div className="border my-6 rounded-lg shadow p-6">
+                        <p className="font-semibold text-right text-lg">دسته بندی ها</p>
+                        <div className="grid grid-cols-12 gap-3 p-3">
+                            {
+                                categories.map((category, index) => {
+                                    return (
+                                        <Zoom key={index} className="col-span-4" duration={200}>
+                                            <Link href={`/admin/category/${category.id}/`}  >
+                                                <Category category={category} />
                                             </Link>
-                                        )
-                                    })
-                                }
-                            </div>
+                                        </Zoom>
+                                    )
+                                })
+                            }
                         </div>
-                    </Zoom>
+                    </div>
                 </>
             }
         </>

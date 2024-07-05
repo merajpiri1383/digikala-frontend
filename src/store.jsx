@@ -5,6 +5,7 @@ import userSlice from "./reducers/user";
 import categorySlice from "./reducers/category";
 import modalSlice from "./reducers/modal";
 import brandSlice from "./reducers/brand";
+import productSlice from "./reducers/product";
 
 const Store = configureStore({
     reducer : {
@@ -12,5 +13,6 @@ const Store = configureStore({
         category : categorySlice ,
         modal : modalSlice ,
         brand : brandSlice ,
+        product : productSlice ,
     }
 });export default Store;

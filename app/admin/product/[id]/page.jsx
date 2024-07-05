@@ -1,7 +1,8 @@
+import { lazy } from "react";
+const Product = lazy(() => import("./components/product"));
+
 const Page = () => {
     return (
-        <div>
-            pri
-        </div>
+        <Product />
     )
 };export default Page;  

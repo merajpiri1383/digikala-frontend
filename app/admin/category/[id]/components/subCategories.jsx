@@ -45,7 +45,7 @@ const Subcategories = () => {
                         {
                             subcategories.map((subcategory, index) => {
                                 return (
-                                    <Zoom key={index}>
+                                    <Zoom key={index} duration={150}>
                                         <Link 
                                         href={`/admin/category/${params.id}/${subcategory.id}/`}>
                                             <div className="col-span-1">

@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 const AddProduct = () => {
 
+    const [showLoading, setShowLoading] = useState(true);
     const [subCategories, setSubcategories] = useState([]);
-    const [showLoading, setShowLoading] = useState(true)
     const [brands, setBrands] = useState([]);
     const router = useRouter();
     const [data, setData] = useState({});

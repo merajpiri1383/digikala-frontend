@@ -86,7 +86,7 @@ const LoginOtpForm = () => {
                     <div className="my-2">
                         <input type="text" maxLength={6} className={`border border-stone-200 w-full p-3 text-lg rounded-lg 
                         outline-none focus:border-cyan-400 transition duration-400 text-center tracking-widest text-cyan-400
-                        ${error ? "border-red-500 focus:border-red-500 text-red-500 " : ""}`}
+                        ${error ? "border-red-500 focus:border-red-500 text-red-500 " : ""} font-bold`}
                             onChange={inputHandeler} />
                         <p className="text-right text-red-500 text-sm">{error}</p>
                     </div>

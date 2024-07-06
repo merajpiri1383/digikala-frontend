@@ -76,7 +76,7 @@ const LoginForm = () => {
                         }
                         <input
                             type={showPassword ? "text" : "password"}
-                            className="outline-none text-right col-span-9 p-2 text-lg"
+                            className="outline-none text-right col-span-9 p-2 text-lg font-bold"
                             onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className="grid grid-cols-1">

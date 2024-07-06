@@ -37,7 +37,7 @@ const Picture = ({ product }) => {
         formData.append("picture",file);
         await API.post(`/product/${product.id}/image/`,formData).then((response) => {
             dispatch(productToggle());
-            setTimeout(() => setShowLoading(false),400);
+            setTimeout(() => setShowLoading(false),400);    
         }).catch((error) => {
             setTimeout(() => setShowLoading(false),400);
             product.images.length && 4 && toast.error("این محصول دارای 4 تصویر می باشد")

@@ -71,7 +71,7 @@ const AuthForm = () => {
                     text-gray-600">لطفا ایمیل خود را  کنید</p>
                     </div>
                     <div className="p-3 text-right">
-                        <input type="email" className={`text-lg p-3 outline
+                        <input type="email" className={`text-lg p-3 outline font-bold
                     ${emailValid ? `outline-green-500` : `outline-rose-500`} rounded-lg w-full
                     outline-1 text-right ${emailValid ? `text-green-500` : `text-rose-500`}`}
                             onChange={(e) => inputHandeler(e)} />

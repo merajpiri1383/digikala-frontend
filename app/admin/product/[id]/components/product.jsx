@@ -2,13 +2,14 @@
 import { lazy } from "react";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-const Loading = lazy(() => import("../../../../components/loading"));
 import API, { handle401Error } from "../../../../../src/api";
 import { Zoom } from "react-awesome-reveal";
 import { useRouter } from "next/navigation";
-const Picture = lazy(() => import("./picture"));
 import { useSelector } from "react-redux";
-const Info = lazy(() => import("./info"));
+const Feature = lazy(() => import("./feature"));
+const Data = lazy(() => import("./data"));
+const Picture = lazy(() => import("./picture"));
+const Loading = lazy(() => import("../../../../components/loading"));
 
 const Product = () => {
 
@@ -25,7 +26,7 @@ const Product = () => {
                 setProduct(response.data);
                 setTimeout(() => setShowLoading(false), 300);
             }).catch((error) => {
-                error.response.status === 401 && handle401Error(router);
+                error.response.status === 401 && handle401Error(router); 
             })
         })();
     }, [ProductToggle]);
@@ -39,7 +40,8 @@ const Product = () => {
                 !showLoading && <Zoom duration={300}>
                     <div className="border rounded-lg p-6 my-6">
                         <Picture product={product} />
-                        <Info product={product} />
+                        <Data product={product} />
+                        <Feature product={product} />
                     </div>
                 </Zoom>
             }

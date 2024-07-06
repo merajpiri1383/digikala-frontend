@@ -8,7 +8,7 @@ const AdminLayout = ({ children }) => {
     return (
         <Suspense fallback={<Loading />}>
             <Permission>
-                <div className="grid grid-cols-10 p-12 gap-6 relative">
+                <div className="grid grid-cols-10 p-12 gap-6">
                     <div className="col-span-7">
                         {children}
                     </div>

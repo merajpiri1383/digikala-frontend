@@ -7,7 +7,7 @@ const Loading = lazy(() => import("../../../../components/loading"));
 import { useDispatch } from "react-redux";
 import { productToggle } from "../../../../../src/reducers/product";
 
-const Info = ({ product }) => {
+const Data = ({ product }) => {
 
     const [showLoading, setShowLoading] = useState(true);
     const formData = new FormData();
@@ -59,7 +59,7 @@ const Info = ({ product }) => {
                 showLoading && <Loading />
             }
             {
-                !showLoading && <form method="post" onSubmit={submitHander}>
+                !showLoading && <form method="post" onSubmit={submitHander} className="p-6">
                     <div className="my-6 border relative rounded-lg">
                         <p className="absolute bg-white px-6 font-bold text-lg -top-5 right-6 text-rose-500">نام</p>
                         <input
@@ -154,4 +154,4 @@ const Info = ({ product }) => {
             }
         </>
     )
-}; export default Info;
+}; export default Data;

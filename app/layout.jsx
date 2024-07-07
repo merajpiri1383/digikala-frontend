@@ -1,13 +1,11 @@
 // styles 
 import "../public/global.css";
 import "../src/modal/modal.css";
-
-import {lazy } from "react";
-const Navbar = lazy(() => import("./components/navbar"));
+import { lazy } from "react";
 import StoreProvider from "./storeProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const Navbar = lazy(() => import("./components/navbar"));
 
 
 // config 

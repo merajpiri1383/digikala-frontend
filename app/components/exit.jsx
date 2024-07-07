@@ -1,20 +1,22 @@
 "use client"
 
-import { toggleExit } from "../../src/reducers/modal";
-import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { clearToken } from "../../src/api";
+import { changeUser } from "../../src/reducers/user";
+import { useDispatch } from "react-redux";
+import { toggle } from "../../src/reducers/modal";
 
-const Exit = () => {
-    
-    const dispatch = useDispatch();
+const Exit = () => { 
+     
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const exit = () => {
         clearToken();
         Cookies.remove("refresh_token");
-        dispatch(toggleExit())
+        dispatch(toggle())
+        dispatch(changeUser({is_login : false,email : null,is_staff : false, is_manager : false}))
         return router.push("/auth/")
     };
 
@@ -30,8 +32,8 @@ const Exit = () => {
                     className="bg-rose-500 text-white text-sm col-span-2 rounded-lg p-2 ">
                     خروج ازحساب
                 </button>
-                <button
-                    onClick={() => dispatch(toggleExit()) }
+                <button 
+                    onClick={() => dispatch(toggle())}
                     className="bg-white text-rose-500 border border-rose-500 text-sm col-span-2 rounded-lg p-2">
                     انصراف
                 </button>

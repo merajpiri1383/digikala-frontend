@@ -3,11 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const modalSlice = createSlice({
     name : "modal",
     initialState : {
-        exit : false,
+        show : false,
+        toggle : false,
     },
     reducers : {
-        toggleExit : (state) => {
-            state.exit = !state.exit
-        } 
+        changeShow : (state,action) => {
+            state.show = action.payload
+        },
+        toggle : (state) => {
+            state.toggle = !state.toggle
+        }
     }
-});export const {toggleExit} = modalSlice.actions;export default modalSlice.reducer;
+});export const {changeShow , toggle} = modalSlice.actions;export default modalSlice.reducer;   

@@ -11,7 +11,7 @@ const ChangePassword = () => {
 
     const [confirmNewPassword,setConfirmNewPassword] = useState(true);
     const [password,setPassword] = useState(null);
-    const [passwordOne ,setPasswordOne] = useState(false);
+    const [passwordOne ,setPasswordOne] = useState(false); 
     const [passwordTwo,setPasswordTwo] = useState(false);
     const [passwordThree,setPasswordThree] = useState(false);
     const passwordRegexWord = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,}$/;
@@ -53,7 +53,7 @@ const ChangePassword = () => {
     };
 
     return (
-        <div className="bg-white p-6 rounded-lg w-8/12">
+        <div className="bg-white p-6 rounded-lg w-full">
             <p className="text-right text-lg p-3 border-b font-semibold">تغییر رمز عبور</p>
             <form className="my-3" onSubmit={formHandeler}>
                 <p className="text-right my-1">رمز عبور جدید</p>

@@ -7,7 +7,7 @@ import Exit from "./exit";
 import { useSelector } from "react-redux";
 import Modal from "../../src/modal/modal";
 
-const ProfileDropDown = ({ children }) => {
+const ProfileDropDown = ({ children }) => { 
 
     const [showDropdown, setShowDropdown] = useState(false);
     const user = useSelector((state) => state.user);
@@ -32,7 +32,7 @@ const ProfileDropDown = ({ children }) => {
                     <p>{user.email}</p>
                 </Link>
 
-                {
+                { 
                     showAdmin && <Link
                         className="p-3 m-1 border-b text-center flex justify-between hover:bg-gray-100 
                         items-center cursor-pointer active:bg-gray-200"

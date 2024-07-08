@@ -1,0 +1,47 @@
+@keyframes slider {
+    0%{
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.slide-odd {
+    animation: slider 500ms both;
+}
+
+.slide-even {
+    animation: slider 500ms both;
+}
+
+.slider{
+    position: relative;
+}
+
+.slider-dots{
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    height: 40px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-dots .slider-dot{
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    background-color: rgba(234, 234, 234, 0.603);
+    border-radius: 50%;
+    transition: 500ms;
+}
+.slider-dots .slider-dot-active{
+    width: 20px !important;
+    border-radius: 20px;
+    transition: 500ms;
+}

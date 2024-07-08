@@ -10,6 +10,7 @@ const Feature = lazy(() => import("./feature"));
 const Data = lazy(() => import("./data"));
 const Picture = lazy(() => import("./picture"));
 const Loading = lazy(() => import("../../../../components/loading"));
+const Info = lazy(() => import("./info")) ;
 
 const Product = () => {
 
@@ -42,6 +43,7 @@ const Product = () => {
                         <Picture product={product} />
                         <Data product={product} />
                         <Feature product={product} />
+                        <Info product={product} />
                     </div>
                 </Zoom>
             }

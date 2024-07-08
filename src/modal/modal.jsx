@@ -14,7 +14,7 @@ const Modal = ({ trigger, children }) => {
         setShowModal(false);
     }; 
 
-    useEffect(() => {
+    useEffect(() => { 
         setShowModal(false);
     },[toggle]);
 

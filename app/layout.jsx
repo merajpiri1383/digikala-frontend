@@ -11,7 +11,7 @@ const Navbar = lazy(() => import("./components/navbar"));
 // config 
 const metadata = {
     title: "Digikala"
-}; export { metadata };
+}; export { metadata }; 
 
 const RootLayout = ({ children }) => {
     return (

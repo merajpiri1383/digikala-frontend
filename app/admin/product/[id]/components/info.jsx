@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { productToggle } from "../../../../../src/reducers/product";
 import AddSubInfo from "./addSubInfo";
+import SubInfo from "./subInfo";
 
 
 
@@ -61,12 +62,25 @@ const Info = ({ product }) => {
                     {
                         product.info && product.info.map((info, index) => {
                             return (
-                                <div className="my-6 p-3 grid grid-cols-10">
-                                    <div className="col-span-9">
+                                <div className="my-6 p-3 grid grid-cols-10" key={index}>
+                                    <div className="col-span-9 p-3 text-right mx-12">
                                         {
-                                            info.sub_info && info.sub_info.map((sub_info,index) => {
+                                            info.sub_info && info.sub_info.map((sub_info, index) => {
                                                 return (
-                                                    <div>{sub_info.name}</div>
+                                                    <div key={index} className="grid grid-cols-5 my-5 gap-2">
+                                                        <div className="col-span-1">
+                                                            <Modal
+                                                                trigger={<button className="bg-rose-500 hover:bg-rose-600 
+                                                                    rounded-lg text-lg text-white p-3 w-full
+                                                                     font-bold">تغییر</button>}
+                                                                children={<SubInfo sub_info={sub_info} />}
+                                                            />
+                                                        </div>
+                                                        <p className="col-span-3 border-b">{sub_info.value}</p>
+                                                        <p className="col-span-1 text-gray-400 font-senibold text-lg">
+                                                            {sub_info.name}
+                                                        </p>
+                                                    </div>
                                                 )
                                             })
                                         }
@@ -74,8 +88,8 @@ const Info = ({ product }) => {
                                     <div className="grid-col-1">
                                         <h4 className="text-center text-lg font-semibold my-3">{info.name}</h4>
                                         <Modal trigger={<button className="bg-rose-500 text-white w-full p-2 
-                                        text-lg font-bold rounded-lg hover:bg-rose-600">تغییر</button>} 
-                                        children={<AddSubInfo info={info} />} />
+                                        text-lg font-bold rounded-lg hover:bg-rose-600">تغییر</button>}
+                                            children={<AddSubInfo info={info} />} />
                                     </div>
                                 </div>
                             )

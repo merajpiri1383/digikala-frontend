@@ -6,38 +6,42 @@ import API, { handle401Error } from "../../../../../src/api";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { productToggle } from "../../../../../src/reducers/product";
+import { changeToggle } from "../../../../../src/reducers/category";
 
-const AddSubInfo = ({ info }) => {
+const SubInfo = ({ sub_info }) => {
     const [name, setName] = useState("");
     const [value, setValue] = useState("");
     const [showLoading, setShowLoading] = useState(true);
     const router = useRouter();
     const dispatch = useDispatch();
+    const formData = new FormData();
 
     useEffect(() => {
         setTimeout(() => setShowLoading(false), 400);
     }, []);
 
     const submitHandeler = async (e) => {
-        e.preventDefault();
         setShowLoading(true);
-        await API.post(`/feature/info/${info.id}/`, { name: name, value: value }).then((response) => {
+        name && formData.append("name", name);
+        value && formData.append("value", value);
+        e.preventDefault();
+        await API.put(`/feature/sub-info/${sub_info.id}/`, formData).then((response) => {
             dispatch(productToggle());
             setTimeout(() => setShowLoading(false), 400);
         }).catch((error) => {
             error.response.status === 401 && handle401Error(router);
         })
-    };
-    
-    const deleteHandeler = async (id) => {
-        await API.delete(`/feature/info/${info.id}/`).then((response) => {
-            dispatch(productToggle());
-            setTimeout(() => setShowLoading(false), 400);
-        }).catch((error) => {
-            error.response.status === 401 && handle401Error(router);
-        })
+
     };
 
+    const deleteHandeler = async (id) => {
+        await API.delete(`/feature/sub-info/${sub_info.id}/`, formData).then((response) => {
+            dispatch(productToggle());
+            setTimeout(() => setShowLoading(false), 400);
+        }).catch((error) => {
+            error.response.status === 401 && handle401Error(router);
+        })
+    };
     return (
         <>
             {
@@ -46,13 +50,12 @@ const AddSubInfo = ({ info }) => {
             {
                 !showLoading && <div className="bg-white w-full rounded-lg p-3">
                     <form method="post" onSubmit={submitHandeler}>
-                        <h4 className="my-6 p-2 text-rose-500 text-xl font-bold text-right">افزودن ویژگی</h4>
                         <div className="my-6 p-3 border relative rounded-lg">
                             <p className="absolute bg-white px-6 -top-4 right-6 text-lg font-bold text-rose-500">نام</p>
                             <input
                                 type="text"
-                                required
                                 onChange={(e) => setName(e.target.value)}
+                                placeholder={sub_info.name}
                                 className="p-1 w-full outline-none text-right text-lg font-bold"
                             />
                         </div>
@@ -60,7 +63,7 @@ const AddSubInfo = ({ info }) => {
                             <p className="absolute bg-white px-6 -top-4 right-6 text-lg font-bold text-rose-500">مقدار</p>
                             <input
                                 type="text"
-                                required
+                                placeholder={sub_info.value}
                                 onChange={(e) => setValue(e.target.value)}
                                 className="p-1 w-full outline-none text-right text-lg font-bold"
                             />
@@ -72,7 +75,7 @@ const AddSubInfo = ({ info }) => {
                             >ذخیره</button>
                             <button
                                 type="button"
-                                onClick={() => deleteHandeler(info.id)}
+                                onClick={() => deleteHandeler(sub_info.id)}
                                 className="bg-rose-500 text-white text-lg font-bold p-2 w-48 rounded-lg mx-3"
                             >حذف</button>
                         </div>
@@ -81,4 +84,4 @@ const AddSubInfo = ({ info }) => {
             }
         </>
     )
-}; export default AddSubInfo;
+}; export default SubInfo;

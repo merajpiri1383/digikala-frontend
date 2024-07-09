@@ -28,7 +28,7 @@ const Categories = () => {
 
     return (
         <div className="p-12">
-            <p className="text-rose-500 text-right text-xl font-semibold">خرید بر اساس دسته بندی</p>
+            <h1 className="text-2xl font-semibold my-6 text-center">خرید بر اساس دسته بندی</h1>
             <div className="grid grid-cols-8 p-6 gap-6">
                 {
                     categories && categories.map((category, index) => {

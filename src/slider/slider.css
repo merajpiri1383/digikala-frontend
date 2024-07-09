@@ -33,15 +33,22 @@
 
 .slider-dots .slider-dot{
     cursor: pointer;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     margin: 10px;
-    background-color: rgba(234, 234, 234, 0.603);
     border-radius: 50%;
     transition: 500ms;
+    background-color: gray;
 }
+
+.slider-dots .slider-dot:hover{
+    scale: 1.5;
+}
+
 .slider-dots .slider-dot-active{
     width: 20px !important;
     border-radius: 20px;
+    height: 10px !important;
+    background-color: rgba(234, 234, 234, 0.603);
     transition: 500ms;
 }

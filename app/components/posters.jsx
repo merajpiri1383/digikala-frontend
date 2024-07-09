@@ -10,12 +10,12 @@ const Posters = () => {
     const [posters, setPosters] = useState([]);
     const [slideIndex, setSlideIndex] = useState(0);
     const router = useRouter();
+    let timeInterval ; 
     
     useEffect(() => {
-        setInterval(() => {
-            slideIndex === posters.length - 1 ? setSlideIndex(0) : setSlideIndex(slideIndex + 1);
-        },5000);
-    },[]);
+        timeInterval =  setTimeout(() => slideIndex === posters.length - 1 ?
+         setSlideIndex(0) : setSlideIndex(slideIndex + 1),4000);
+    },[slideIndex]);
 
 
     useEffect(() => {
@@ -28,6 +28,12 @@ const Posters = () => {
         })()
     }, []);
 
+    const sliderDotClick = (index) => {
+        clearTimeout(timeInterval);
+        setSlideIndex(index);
+
+    }
+
     return (
         <div className="slider">
             {
@@ -37,6 +43,7 @@ const Posters = () => {
                             <img
                                 src={poster.image}
                                 alt={poster.image}
+                                key={index}
                                 className={`${index % 2 === 0 ? "slide-even" : "slide-odd"} h-96 w-full object-cover`}
                             />
                         )
@@ -48,7 +55,8 @@ const Posters = () => {
                     posters.map((poster,index) => {
                         return (
                             <span 
-                            onClick={() => setSlideIndex(index)}
+                            key={index}
+                            onClick={() => sliderDotClick(index)}
                             className={`slider-dot ${index === slideIndex && "slider-dot-active"}`}></span>
                         )
                     })

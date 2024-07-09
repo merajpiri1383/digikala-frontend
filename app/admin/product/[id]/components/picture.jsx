@@ -62,7 +62,7 @@ const Picture = ({ product }) => {
                                 {
                                     product.images.map((image, index) => {
                                         return (
-                                            <div key={index} className="bg-red-500 col-span-1 rounded-lg relative h-44">
+                                            <div key={index} className="col-span-1 rounded-lg relative h-44">
                                                 <img
                                                     src={image.picture}
                                                     className="object-cover h-44 rounded-lg"

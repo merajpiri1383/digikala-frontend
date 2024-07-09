@@ -57,10 +57,6 @@ const AddProduct = () => {
 
     };
 
-    useEffect(() => {
-        console.log(data)
-    } , [data])
-
 
     return (
         <>

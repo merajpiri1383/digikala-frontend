@@ -9,13 +9,13 @@ const SliderMost = ({ data }) => {
     let x = 0 ;
 
     const clickHandeler = () => {
-        x = x - 200 
-        slidesElement.style.transform = `translateX(${x}px)`
+        x = x - 400
+        slidesElement.scrollLeft = x ;
     };
 
     const clickRightHander = () => {
-        x = x + 200
-        slidesElement.style.transform = `translateX(${x}px)`;
+        x = x + 400
+        slidesElement.scrollLeft = x ; 
     }
 
     return (

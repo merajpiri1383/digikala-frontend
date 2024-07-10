@@ -4,7 +4,7 @@ import { Zoom } from "react-awesome-reveal";
 
 const RightPannel = () => {
     return ( 
-        <Zoom duration={200} className="sticky top-6">
+        <Zoom duration={200} className="sticky top-12 py-8">
             <div className="border border-stone-200 p-3 rounded-lg shadow">
                 <Link href={"/admin/category/"} className="text-center">
                     <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2 border-b">دسته بندی ها</p>
@@ -13,7 +13,10 @@ const RightPannel = () => {
                     <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2 border-b">برند ها</p>
                 </Link>
                 <Link href={"/admin/product/"} className="text-center">
-                    <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2">افزودن محصول</p>
+                    <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2 border-b">افزودن محصول</p>
+                </Link>
+                <Link href={"/admin/color/"} className="text-center">
+                    <p className="hover:bg-stone-100 p-3 rounded-lg font-semibold my-2">افزودن رنگ</p>
                 </Link>
             </div>
         </Zoom>

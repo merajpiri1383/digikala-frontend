@@ -6,6 +6,7 @@ import API, { handle401Error } from "../../../../../src/api";
 import { Zoom } from "react-awesome-reveal";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+const ColorProduct =  lazy(() => import("./color"));
 const Feature = lazy(() => import("./feature"));
 const Data = lazy(() => import("./data"));
 const Picture = lazy(() => import("./picture"));
@@ -42,6 +43,7 @@ const Product = () => {
                     <div className="border rounded-lg p-6 my-6">
                         <Picture product={product} />
                         <Data product={product} />
+                        <ColorProduct />
                         <Feature product={product} />
                         <Info product={product} />
                     </div>

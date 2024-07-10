@@ -1,11 +1,13 @@
 import { lazy } from "react";
  
 const Poster = lazy(() => import("./components/poster"));
+const MostSell = lazy(() => import("./components/mostSeler"));
 
 const Page = () => {
     return (
-        <div>
-            <Poster />
-        </div>
+        <>
+        <Poster />
+        <MostSell />
+        </>
     )
 };export default Page;

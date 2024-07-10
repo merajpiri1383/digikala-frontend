@@ -13,27 +13,27 @@ const Bar = () => {
     return (
         <div className="grid grid-cols-1 p-3  h-2/3 mt-6">
             <Tooltip text={"افزودن به علاقه مندی "}>
-                <LuHeart className="col-span-1" size={"1.5rem"} color="gray" />
+                <LuHeart className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
 
             <Tooltip text={"به اشتراک گذاری کالا"}>
-                <IoMdShare className="col-span-1" size={"1.5rem"} color="gray" />
+                <IoMdShare className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
 
             <Tooltip text={"اطلاع رسانی شگفت انگیز"}>
-                <MdOutlineNotificationsActive className="col-span-1" size={"1.5rem"} color="gray" />
+                <MdOutlineNotificationsActive className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
 
             <Tooltip text={"نمودار قیمت"}>
-                <FaChartLine className="col-span-1" size={"1.5rem"} color="gray" />
+                <FaChartLine className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
 
             <Tooltip text={"مقایسه کالا"}>
-                <MdCompare className="col-span-1" size={"1.5rem"} color="gray" />
+                <MdCompare className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
 
             <Tooltip text={"افزودن به لیست"}>
-                <IoIosList className="col-span-1" size={"1.5rem"} color="gray" />
+                <IoIosList className="col-span-1 cursor-pointer" size={"1.5rem"} color="gray" />
             </Tooltip>
         </div>
     )
@@ -56,7 +56,6 @@ const Picture = ({ product }) => {
                     <div className="grid grid-cols-4 gap-4">
                         {
                             product.images[0] && product.images.map((image, index) => {
-                                console.log(image);
                                 return (
                                     <Zoom duration={400} key={index} className="col-span-1">
                                         <div className="border p-2 rounded-lg">

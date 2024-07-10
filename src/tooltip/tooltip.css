@@ -1,0 +1,15 @@
+.tooltip{
+    position: relative;
+}
+
+.tooltip .tooltip-text{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.732);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    right: 20px;
+    width: max-content;
+    direction: rtl;
+    bottom: 5px;
+}

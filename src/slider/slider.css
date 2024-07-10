@@ -11,6 +11,11 @@
     animation: slider 500ms both;
 }
 
+.navbar{
+    z-index: 10000 !important;
+    background-color: white;
+}
+
 .slide-even {
     animation: slider 500ms both;
 }
@@ -67,7 +72,7 @@
     grid-auto-columns: 25%;
     direction: rtl;
     transition: 300ms;
-    gap: .5rem;
+    gap: 1rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -78,6 +83,10 @@
     grid-template-columns: 6fr 1fr 2fr;
     align-items: center;
     direction: ltr;
+}
+
+.slider-container .slides .slide:hover{
+    box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.091);
 }
 
 .slider-container .slides .slide .slide-img {

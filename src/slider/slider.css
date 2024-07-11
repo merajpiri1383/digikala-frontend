@@ -106,7 +106,8 @@
 .slider-container .slide-button {
     position: absolute;
     bottom: 50%;
-    background-color: rgba(228, 228, 228, 0.92);
+    background-color: white;
+    border: 1px solid rgba(128, 128, 128, 0.379);
     font-size: 25px;
     padding: 5px;
     border-radius: 50%;

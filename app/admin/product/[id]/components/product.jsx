@@ -43,7 +43,7 @@ const Product = () => {
                     <div className="border rounded-lg p-6 my-6">
                         <Picture product={product} />
                         <Data product={product} />
-                        <ColorProduct />
+                        <ColorProduct product={product} />
                         <Feature product={product} />
                         <Info product={product} />
                     </div>

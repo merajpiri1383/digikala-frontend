@@ -11,11 +11,6 @@
     animation: slider 500ms both;
 }
 
-.navbar{
-    z-index: 10000 !important;
-    background-color: white;
-}
-
 .slide-even {
     animation: slider 500ms both;
 }

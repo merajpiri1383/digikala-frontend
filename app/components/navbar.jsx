@@ -39,7 +39,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="lg:grid-cols-9 lg:grid p-3 sticky navbar top-0">
+        <div className="lg:grid-cols-9 lg:grid p-3">
             <div className="hidden lg:grid p-2 gap-2 lg:col-span-4 grid-cols-10 items-center">
                 <div className="col-span-2">
                     <Link href={"/cart/"} className="bg-lime-400">

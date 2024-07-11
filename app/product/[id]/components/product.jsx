@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import {useState , useEffect} from "react";
 const Picture = lazy(() => import("./picture"));
+const Info = lazy(() => import("./info"));
+const Specific = lazy(() => import("./specific"));
 
 
 
@@ -28,9 +30,14 @@ const Product = () => {
     return (
         <div>
             <div className="grid grid-cols-12 p-6">
-                <div className="col-span-7"></div>
+                <div className="col-span-7">
+                    <Info product={product} />
+                </div>
                 <div className="col-span-5">
                     <Picture product={product} />
+                </div>
+                <div className="col-span-12">
+                    <Specific product={product} />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 --- 
 
 build with react.js and next.js
-
+i have created modal,tooltip,slider components myself without using any package
 --- 
 
 ## Packages 
